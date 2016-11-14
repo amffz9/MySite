@@ -1,0 +1,31 @@
+nginx:
+  build: ./nginx/
+#  image: nginx:latest
+  ports:
+    - 80:80
+  links:
+    - php
+  volumes:
+    - .:/var/www/html
+
+php:
+  build: ./php/
+  links:
+    - mysql
+  expose:
+    - 9000
+  volumes:
+    - .:/var/www/html
+
+mysql:
+  image: mysql:latest
+  volumes:
+    - /var/lib/mysql
+  ports:
+    - 3306:3306
+  environment:
+    MYSQL_ROOT_PASSWORD: secret
+    MYSQL_DATABASE: DB
+    MYSQL_USER: test
+    MYSQL_PASSWORD: test
+
