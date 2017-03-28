@@ -1,0 +1,21 @@
+{
+  "name": "MySite",
+  "homepage": "https://github.com/amffz9/MySite",
+  "description": "A website I use to try things out in",
+  "main": "index.php",
+  "authors": [
+    "Adam Forbis"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "normalize-css": "^6.0.0"
+  }
+}

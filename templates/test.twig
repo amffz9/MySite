@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Twig Template</title>
+    {#Include the style sheets#}
+    <link rel="stylesheet" href="/styles/test.css">
+</head>
+<body>
+<div class="side-bar">
+    {% block navbar %}
+        <div><a href="">Home</a></div>
+        <div><a href="">About</a></div>
+        <div><a href="">Other</a></div>
+        <div><a href="">Login</a></div>
+        <div><a href="{{ path_for('info') }}">Info</a></div>
+    {% endblock %}
+</div>
+<div class="main-content">
+    {% block content %}
+
+    {% endblock %}
+</div>
+</body>
+</html>

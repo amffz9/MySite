@@ -1,0 +1,9 @@
+# Created by .ignore support plugin (hsz.mobi)
+.idea/workspace.xml
+cache/
+composer.lock
+public/bower_components/
+public/styles/test.css
+public/styles/test.css.map
+settings/db_settings.ini
+vendor

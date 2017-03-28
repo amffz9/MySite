@@ -13,11 +13,12 @@
     "filp/whoops": "2.1.4",
     "twig/twig": "^3.0",
     "guzzlehttp/guzzle": "6.2.2",
-    "aura/router": "3.0.1"
+    "phpunit/phpunit": "6.0.x-dev",
+    "league/route": "3.x-dev"
   },
   "autoload": {
     "psr-4": {
-      "\\App": "src/App"
+      "": "src/"
     }
   }
 }
