@@ -7,22 +7,45 @@
  */
 
 use League\Route\RouteCollection;
-use Psr\Http\Message\ResponseInterface;
-use Psr\Http\Message\ServerRequestInterface;
+use Psr\Http\Message\ResponseInterface as Response;
+use Psr\Http\Message\ServerRequestInterface as Request;
 
 $container = Application::getContainer();
-
 $routes = $container->get(RouteCollection::class);
 
-$routes->get('/', function (ServerRequestInterface $request, ResponseInterface $response) use ($container) {
-    $response->getBody()->write(
-        $container
-            ->get(Twig_Environment::class)
-            ->render('test.twig')
-    );
+$routes->get('/', function (Request $request, Response $response) use ($container) {
+    $twig = $container->get(Twig_Environment::class);
+    $response->getBody()->write($twig->render('test.twig'));
+
     return $response;
-});
-$routes->get('/PHPInfoPage', function (ServerRequestInterface $request, ResponseInterface $response) {
+})->setName("Home");
+
+$routes->get('/Info', function (Request $request, Response $response) use ($container) {
+    $twig = $container->get(Twig_Environment::class);
     phpinfo();
+    //$pdo = new PDO();
+
+    //$twig->render('info.twig', ['data' => array()]);
     return $response;
-})->setName('info');
+})->setName('Info');
+
+$routes->get('/About', function (Request $request, Response $response) use ($container) {
+    $twig = $container->get(Twig_Environment::class);
+    $response->getBody()->write($twig->render('test.twig'));
+
+    return $response;
+})->setName('About');
+
+$routes->get('/Other', function (Request $request, Response $response) use ($container) {
+    $twig = $container->get(Twig_Environment::class);
+    $response->getBody()->write($twig->render('test.twig'));
+
+    return $response;
+})->setName("Other");
+
+$routes->get('/Login', function (Request $request, Response $response) use ($container) {
+    $twig = $container->get(Twig_Environment::class);
+    $response->getBody()->write($twig->render('test.twig'));
+
+    return $response;
+})->setName('Login');

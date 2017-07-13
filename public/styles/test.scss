@@ -1,6 +1,8 @@
-@import "/bower_components/normalize-css/normalize.css";
+//@import "/bower_components/normalize-css/normalize.css";
 
-$toolbar-color: #2aabd2;
+$primary-color: rgb(41, 79, 109);
+$complementary-color: rgb(170, 121, 57);
+
 * {
   box-sizing: border-box;
 }
@@ -14,19 +16,31 @@ body {
   flex: 1;
 }
 
-.side-bar {
+.nav-bar {
   display: flex;
   justify-content: flex-end;
+  align-content: stretch;
   align-items: center;
-  background-color: $toolbar-color;
-  height: 3em;
+
+  background-color: $primary-color;
+  border-bottom: 6px solid $complementary-color;
+
+  .sub-nav {
+    display: flex;
+  }
   a {
+    display: inline;
     padding: 1em;
     text-decoration: none;
     color: white;
+    &.active {
+      background-color: $complementary-color;
+      color: white;
+    }
+
     &:hover {
-      color: $toolbar-color;
-      background-color: white;
+      color: white;
+      background-color: $complementary-color;
     }
   }
 }

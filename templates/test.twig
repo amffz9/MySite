@@ -1,3 +1,4 @@
+{% set items = ['Home', 'About', 'Other', 'Login', 'Info'] %}
 <!doctype html>
 <html lang="en">
 <head>
@@ -10,14 +11,18 @@
     <link rel="stylesheet" href="/styles/test.css">
 </head>
 <body>
-<div class="side-bar">
-    {% block navbar %}
-        <div><a href="">Home</a></div>
-        <div><a href="">About</a></div>
-        <div><a href="">Other</a></div>
-        <div><a href="">Login</a></div>
-        <div><a href="{{ path_for('info') }}">Info</a></div>
-    {% endblock %}
+    <div class="nav-bar">
+        {% block navbar %}
+            <div class="sub-nav">
+                {% for item in items %}
+                    {% if path_for(item) == current_path %}
+                        <a href="{{ path_for(item) }}" class="active">{{ item }}</a>
+                    {% else %}
+                        <a href="{{ path_for(item) }}">{{ item }}</a>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        {% endblock %}
 </div>
 <div class="main-content">
     {% block content %}

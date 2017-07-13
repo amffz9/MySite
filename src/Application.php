@@ -1,4 +1,5 @@
 <?php
+
 use Interfaces\ApplicationInterface;
 use League\Container\ContainerInterface;
 use League\Route\RouteCollection;
@@ -37,6 +38,10 @@ class Application implements ApplicationInterface
         $routes = self::getContainer()->get(RouteCollection::class);
         $request = self::getContainer()->get(ServerRequestInterface::class);
         $response = self::getContainer()->get(ResponseInterface::class);
+
+        /*Set up twig globals*/
+        $twig = self::getContainer()->get(Twig_Environment::class);
+        $twig->addGlobal("current_path", $request->getUri()->getPath());
 
         $response = $routes->dispatch($request, $response);
 

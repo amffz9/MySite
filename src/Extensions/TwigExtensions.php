@@ -34,7 +34,10 @@ class TwigExtensions extends \Twig_Extension
 
     public function pathFor(string $name)
     {
-        return $this->router->getNamedRoute($name)->getPath();
+        try {
+            return $this->router->getNamedRoute($name)->getPath();
+        } catch (\Exception $exception) {
+            return "";
+        }
     }
-
 }
