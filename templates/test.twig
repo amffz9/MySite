@@ -1,3 +1,7 @@
+{#Available things to use
+current_path = the current path of this page
+path_for() = Gets the name of the current path
+#}
 {% set items = ['Home', 'About', 'Other', 'Login', 'Info'] %}
 <!doctype html>
 <html lang="en">
@@ -11,23 +15,31 @@
     <link rel="stylesheet" href="/styles/test.css">
 </head>
 <body>
-    <div class="nav-bar">
-        {% block navbar %}
-            <div class="sub-nav">
-                {% for item in items %}
-                    {% if path_for(item) == current_path %}
-                        <a href="{{ path_for(item) }}" class="active">{{ item }}</a>
-                    {% else %}
-                        <a href="{{ path_for(item) }}">{{ item }}</a>
-                    {% endif %}
-                {% endfor %}
-            </div>
-        {% endblock %}
-</div>
-<div class="main-content">
-    {% block content %}
 
+<div class="nav-bar">
+    {% block navbar %}
+        <div class="sub-nav">
+            {% for item in items %}
+                {% if path_for(item) == current_path %}
+                    <a href="{{ path_for(item) }}" class="active">{{ item }}</a>
+                {% else %}
+                    <a href="{{ path_for(item) }}">{{ item }}</a>
+                {% endif %}
+            {% endfor %}
+            <div class="logo">
+                Logo
+            </div>
+        </div>
     {% endblock %}
+</div>
+
+
+<div class="main-content">
+    <div class="inner-content">
+        {% block content %}
+
+        {% endblock %}
+    </div>
 </div>
 </body>
 </html>

@@ -68,8 +68,12 @@ class Application implements ApplicationInterface
         $container->share(Twig_Environment::class)
             ->withArguments([$loader, ['cache' => false]]);
 
-        $container->get(Twig_Environment::class)
-            ->addExtension($extension);
+        $twig_environment = $container->get(Twig_Environment::class);
+
+        /*My custom extensions for twig*/
+        $twig_environment->addExtension($extension);
+        /*Loading the Twig Debug Extension for the dump function*/
+        $twig_environment->addExtension(new Twig_Extension_Debug());
         //replace false with cachePath in prod
     }
 

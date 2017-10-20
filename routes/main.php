@@ -20,14 +20,7 @@ $routes->get('/', function (Request $request, Response $response) use ($containe
     return $response;
 })->setName("Home");
 
-$routes->get('/Info', function (Request $request, Response $response) use ($container) {
-    $twig = $container->get(Twig_Environment::class);
-    phpinfo();
-    //$pdo = new PDO();
-
-    //$twig->render('info.twig', ['data' => array()]);
-    return $response;
-})->setName('Info');
+$routes->get('/Info', [new \Controllers\MainController, 'info'])->setName('Info');
 
 $routes->get('/About', function (Request $request, Response $response) use ($container) {
     $twig = $container->get(Twig_Environment::class);
